@@ -1,8 +1,11 @@
 from django.contrib import admin
 from django.urls import path , include
+from Smartly.views.homepage import home 
+
+
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path("", include ("Smartly.urls"))
+    path('',home,name='home' ),
+ 
 ]
