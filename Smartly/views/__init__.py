@@ -1,0 +1,1 @@
+from Smartly.views.homepage import home
