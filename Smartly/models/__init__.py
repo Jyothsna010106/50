@@ -1,1 +1,1 @@
-from Smartly.models.course import Course
+from Smartly.models.course import Course , Learning , Prerequisite,Tag

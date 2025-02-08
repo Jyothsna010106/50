@@ -12,5 +12,23 @@ class Course(models.Model):
     length=models.IntegerField( null = False)
 
 
+class CourseProperty(models.Model):
+    discription = models.CharField(max_length=20,null=False)
+    course=models.ForeignKey(Course,null=False , on_delete=models.CASCADE)
+
+
+class Meta:
+    abstract = True
+
+
+class Tag(CourseProperty):
+   pass
+
+class Prerequisite(CourseProperty):
+   pass
+
+
+class Learning(CourseProperty):
+    pass
 
 
