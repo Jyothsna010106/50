@@ -1,0 +1,1 @@
+from Smartly.models.course import Course
