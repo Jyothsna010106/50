@@ -11,9 +11,12 @@ class Course(models.Model):
     resource= models.FileField(upload_to="files/resource")
     length=models.IntegerField( null = False)
 
+    def __str__(self):
+        return self.name
+
 
 class CourseProperty(models.Model):
-    discription = models.CharField(max_length=20,null=False)
+    discription = models.CharField(max_length=500,null=False)
     course=models.ForeignKey(Course,null=False , on_delete=models.CASCADE)
 
 
