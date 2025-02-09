@@ -10,15 +10,17 @@ Smartly
         font-size: 20px;
     }
 </style>
-
-<div class="container-fluid">
-
-    <h1 class="display-1">Selected course :  {{slug}}</h1>
+<div class="container-fluid"></div>
+<div  hidden >
+        <p class="">Selected course :  {{course.name}}</p>
+        <p class="">Selected course :  {{course.price}}</p>
+        <p class="">Selected course :  {{course.discount}}</p>
+        <p class="">Selected course :  {{course.description}}</p>
+        <p class="">Selected course :  {{course.video_set.all}}</p>
+        <p class="">Selected course :  {{course.tag_set.all}}</p>
+        <p class="">Selected course :  {{course.prerequisites_set.all}}</p>
+        <p class="">Selected course :  {{course.learning_set.all}}</p>
+    </div>
 
 </div>
-
-
-
-
-
 {% endblock%}
