@@ -19,10 +19,8 @@ class Course(models.Model):
 class CourseProperty(models.Model):
     discription = models.CharField(max_length=500,null=False)
     course=models.ForeignKey(Course,null=False , on_delete=models.CASCADE)
-
-
-class Meta:
-    abstract = True
+    class Meta:
+        abstract = True
 
 
 class Tag(CourseProperty):
