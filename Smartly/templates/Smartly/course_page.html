@@ -1,46 +1,49 @@
 {% extends 'Smartly/base.html' %}
+{% load static %}
 {%load course_custom_tags%}
 
 {%block title %}
 Smartly
 {%endblock%}
+
+{%block css%}
+<link rel="stylesheet" href="{%static 'Smartly/css/scrollbar.css'%}">
+<link rel="stylesheet" href="{%static 'Smartly/css/common.css'%}">
+{%endblock%}
+
+{%block js%}
+<script src="{% static 'Smartly/js/course_page.js' %}"></script>
+{%endblock%}
+
+
 {%block content%}
-<style>
-    .price{
-        font-size: 20px;
-    }
-</style>
-<div class="container-fluid"></div>
-<div hidden>
-        <p class="">Selected course :  {{course.name}}</p>
-        <p class="">Selected course :  {{course.price}}</p>
-        <p class="">Selected course :  {{course.discount}}</p>
-        <p class="">Selected course :  {{course.description}}</p>
-        <p class="">Selected course :  {{course.video_set.all}}</p>
-        <p class="">Selected course :  {{course.tag_set.all}}</p>
-        <p class="">Selected course :  {{course.prerequisite_set.all}}</p>
-        <p class="">Selected course :  {{course.learning_set.all}}</p>
-    </div>
+<div class="container-fluid">
     <div>
+        
 <br>
-<div class="card p-3"><div class="row">
+<div class="card p-3">
+    <div class="row">
+        <!--youtube player-->
     <div class="col">
         <div class="mx-auto">
-            <iframe mx-auto width="100%" height="415" src="https://www.youtube.com/embed/4DljBbiC2p4?si=-zD0url3XQaN1T4c" title="YouTube video player"
+            <iframe id="player" mx-auto width="100%" height="315" 
+            src="https://www.youtube.com/embed/{{video.video_id}}" title="YouTube video player"
             frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; 
-           web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+           web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
     </div>
     
-    
+    <!--lecture list-->
     <div class="col-3">
-    {%for video in course.video_set.all %}
-    <li class="list-group-item "><a href="#">{{video}}</a></li>
-    {%endfor%}
-    </ul>
-    </div>
-    
-    
-    </div></div>
+       
+            <ul id="video_list"  class="list-group overflow-y-scroll">
+                {%for video in course.video_set.all %}
+                <li class="list-group-item ">
+                    <a href="?lecture={{video.serial_number}}">{{video}}</a></li>
+                {%endfor%}
+            </div>
+        </div>
+</div>
 <!--course details -->
 <div class="mt-3">
     <div class="card" >
@@ -87,4 +90,8 @@ Smartly
     </div>
 
 </div>
+
+
+
+
 {% endblock%}
