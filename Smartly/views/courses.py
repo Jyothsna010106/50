@@ -5,6 +5,7 @@ from django.shortcuts import HttpResponse
 def coursePage(request,slug):
      course= Course.objects.get(slug=slug) 
      serial_number=request.GET.get('lecture')
+     videos=course.video_set.all().order_by("serial_number")
 
      if serial_number is None:
           serial_number=1
@@ -12,7 +13,8 @@ def coursePage(request,slug):
      print(video)
      context={
           "course":course,
-          "video":video
+          "video":video,
+          'videos':videos
      }
      return render(request,template_name="Smartly/course_page.html", context=context)
 

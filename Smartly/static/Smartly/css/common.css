@@ -5,3 +5,9 @@
 .overflow-y-scroll{
     overflow: scroll;
 }
+
+
+.active-video{
+    background-color: rgb(42, 44, 46);
+    color: antiquewhite;
+}

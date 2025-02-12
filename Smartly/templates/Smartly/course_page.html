@@ -3,13 +3,13 @@
 {%load course_custom_tags%}
 
 {%block title %}
-Smartly
+  Smartly
 {%endblock%}
 
-{%block css%}
-<link rel="stylesheet" href="{%static 'Smartly/css/scrollbar.css'%}">
-<link rel="stylesheet" href="{%static 'Smartly/css/common.css'%}">
-{%endblock%}
+{% block css %}
+<link rel="stylesheet" href="{% static 'Smartly/css/scrollbar.css'%}">
+<link rel="stylesheet" href="{% static 'Smartly/css/common.css'%}">
+{% endblock %}
 
 {%block js%}
 <script src="{% static 'Smartly/js/course_page.js' %}"></script>
@@ -17,6 +17,24 @@ Smartly
 
 
 {%block content%}
+<style>
+   a:hover{
+    text-decoration: none;
+
+   }
+   a{
+    color: rgb(48, 46, 46);
+   }
+   .active-video-link {
+    color: rgb(156, 158, 144);
+
+   }
+   .active-video-link:hover {
+    text-decoration: none;
+    color: rgb(255, 255, 252);
+
+   }
+</style>
 <div class="container-fluid">
     <div>
         
@@ -37,10 +55,15 @@ Smartly
     <div class="col-3">
        
             <ul id="video_list"  class="list-group overflow-y-scroll">
-                {%for video in course.video_set.all %}
-                <li class="list-group-item ">
-                    <a href="?lecture={{video.serial_number}}">{{video}}</a></li>
+                {% for v in videos %}
+                <li 
+                class="list-group-item {% if v == video %} active-video {% endif %}">
+                    <a class="{% if v == video %} active-video-link {% endif %}"   href="?lecture={{v.serial_number}}">
+                        {{v}}
+                    </a>
+                </li>
                 {%endfor%}
+                </ul>
             </div>
         </div>
 </div>
