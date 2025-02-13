@@ -1,0 +1,1 @@
+from Smartly.forms.registration_form import RegistrationForm
