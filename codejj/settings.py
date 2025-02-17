@@ -117,9 +117,30 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
-MEDIA_URL="/media/"
-MEDIA_ROOT=BASE_DIR 
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+KEY_ID = "rzp_test_hYv5NRihDBeuHw"
+KEY_SECRET = "8Kr8vNQ9GhhJsmtQa61845OL"
+
+# Add trusted origins for CSRF
+CSRF_TRUSTED_ORIGINS = [
+    'https://api.razorpay.com',
+    'http://localhost:8000',
+    'http://127.0.0.1:8000',
+]
+
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',  # Ensure this is included
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]

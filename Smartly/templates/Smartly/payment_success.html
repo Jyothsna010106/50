@@ -1,0 +1,12 @@
+{% extends 'Smartly/base.html' %}
+{% block title %}
+Payment Success
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Payment Successful</h1>
+    <p>Thank you for your payment. Your transaction was successful.</p>
+    <a href="{% url 'my_courses' %}" class="btn btn-primary">Go to My Courses</a>
+</div>
+{% endblock %}

@@ -1,31 +1,22 @@
 {% extends 'Smartly/base.html' %}
-{%load course_custom_tags%}
-
-{%block title %}
+{% load course_custom_tags %}
+{%block title%}
 Signup
-{%endblock%}
+{% endblock %}
+
 {%block content%}
 
-
 <div class="container">
-    <h1 class="display-1">Signup Page</h1>
+   <h1 class="display-1">Signup Page</h1>
 
-<div>
+   <div>
+      <form action="/signup" method="POST">
+         {% csrf_token %}
+         {{form.as_ul}}
 
-   <form action="/signup" method="POST"> 
-    {% csrf_token %}
-    {{form.as_ul}}
- 
-    <input type="submit" value="Register">
-   </form>
+         <input type="submit" value="Register">
+      </form>
+   </div>
 </div>
 
-
-
-</div>
-
-
-
-
-
-{% endblock%}
+{%endblock%}

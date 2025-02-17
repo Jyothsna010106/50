@@ -1,21 +1,18 @@
 var player;
-var video_list;
-   
-document.onreadystatechange=function(){
-   if(document.readyState == 'interactive'){
-    player = document.getElementById("player")
-    video_list=document.getElementById("video_list")
-    maintainratio()
-   }
+var video_list
+document.onreadystatechange = function () {
+    if (document.readyState == 'interactive') {
+        player = document.getElementById("player")
+        video_list = document.getElementById("video_list")
+        
+        maintainRatio()
+    }
 }
-
-
-function maintainratio(){
-    var w= player.clientWidth
-    var h=(w*9)/16
-    console.log({w , h});
-    player.height=h
-    video_list.style.maxHeight=h +"px"
+function maintainRatio() {
+    var w = player.clientWidth
+    var h = (w * 9) / 16
+    console.log({ w, h });
+    player.height = h
+    video_list.style.maxHeight = h + "px"
 }
-
-window.onresize=maintainratio
+window.onresize = maintainRatio

@@ -1,27 +1,34 @@
 from django.shortcuts import render , redirect
-from Smartly.models import Course , Video
-from django.shortcuts import HttpResponse
+from django.contrib.auth import logout , login
+from Smartly.forms import RegistrationForm , LoginForm
+from django.views import View
+from django.views.generic.edit import FormView
 
 
+class SignupView(FormView):
+    template_name="Smartly/signup.html" 
+    form_class = RegistrationForm
+    success_url  = '/login'
 
-from Smartly.forms import RegistrationForm
-
-def signup(request): 
-    if(request.method =="GET"):
-      form = RegistrationForm()
-      return render(request,
-      template_name="Smartly/signup.html ", context= { 'form' : form })
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
     
-    form = RegistrationForm(request.POST)
-    if(form.is_valid()):
-      user = form.save()
-      if(user is not None):
-        return redirect('login')
-    return render(request,
-      template_name="Smartly/signup.html ", context= { 'form' : form })
 
-def login(request): 
-    return render(request,
-    template_name="Smartly/login.html")
+class LoginView(FormView):
+    template_name="Smartly/login.html" 
+    form_class = LoginForm
+    success_url  = '/'
 
-                   
+    def form_valid(self, form):
+        login(self.request , form.cleaned_data)
+        next_page = self.request.GET.get('next')
+        if next_page is not None:
+            return redirect(next_page)
+        return super().form_valid(form)
+
+
+def signout(request ):
+    logout(request)
+    return redirect("home")
+

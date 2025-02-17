@@ -2,15 +2,24 @@
 {%load course_custom_tags%}
 
 {%block title %}
-login
+Login
 {%endblock%}
 {%block content%}
 
 
 <div class="container">
-    <h1 class="display-1">login Page</h1>
-
-</div>
+    <h1 class="display-1">Login Page</h1>
+    <hr>
+ 
+    <div>
+       <form method="post" action="">
+          {% csrf_token %}
+          {{form.as_p}}
+ 
+          <input type="submit" value="Login">
+       </form>
+    </div>
+ </div>
 
 
 
